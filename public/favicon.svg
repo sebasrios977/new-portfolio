@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Background -->
+  <rect width="32" height="32" rx="6" fill="#0B1120"/>
+  <!-- Green glow dot -->
+  <circle cx="5" cy="5.5" r="2.5" fill="#00E587">
+    <animate attributeName="opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  <!-- SR text -->
+  <text
+    x="3"
+    y="24"
+    font-family="'Space Mono', 'Courier New', monospace"
+    font-size="15"
+    font-weight="700"
+    fill="#00E587"
+    letter-spacing="-0.5"
+  >SR</text>
+  <!-- .dev text -->
+  <text
+    x="3"
+    y="31"
+    font-family="'Space Mono', 'Courier New', monospace"
+    font-size="6.5"
+    font-weight="400"
+    fill="#3D6080"
+    letter-spacing="0.3"
+  >.dev</text>
+</svg>

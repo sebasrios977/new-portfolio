@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --green:      #00E587;
+  --green-dim:  rgba(0, 229, 135, 0.10);
+  --green-glow: rgba(0, 229, 135, 0.25);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background-color: #0B1120; }
+
+::selection        { background: var(--green-glow); color: #F0F6FF; }
+::-webkit-scrollbar       { width: 5px; }
+::-webkit-scrollbar-track { background: #0B1120; }
+::-webkit-scrollbar-thumb { background: #1E3A5F; border-radius: 3px; }
+
+input::placeholder,
+textarea::placeholder { color: #3D6080; }
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 12px #00E587; }
+  50%       { box-shadow: 0 0 24px #00E587, 0 0 40px rgba(0, 229, 135, 0.25); }
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+.anim-spin-slow    { animation: spin 12s linear infinite; }
+.anim-spin-reverse { animation: spin 20s linear infinite reverse; }
+.anim-pulse-glow   { animation: pulse-glow 2s ease-in-out infinite; }
+.anim-blink        { animation: blink 0.8s step-end infinite; }
