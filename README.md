@@ -1,32 +1,49 @@
-# SebastianPortfolio
+# Sebastian Rios — Portfolio
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.3.
+Personal portfolio website built with React and Vite, deployed on GitHub Pages.
 
-## Development server
+## Tech Stack
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **React 18** — UI
+- **Vite** — build tool and dev server
+- **Tailwind CSS** — styling
+- **EmailJS** — contact form
+- **gh-pages** — GitHub Pages deployment
 
-## Code scaffolding
+## Getting Started
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```bash
+npm install
+npm run dev
+```
 
-## Build
+Open [http://localhost:5173](http://localhost:5173) in your browser.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Build & Deploy
 
-## Running unit tests
+Build for production:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```bash
+npm run build
+```
 
-## Running end-to-end tests
+Deploy to GitHub Pages:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```bash
+npm run deploy
+```
 
-## Further help
+The site will be live at [https://sebasrios977.github.io/new-portfolio](https://sebasrios977.github.io/new-portfolio).
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Project Structure
 
-
-To upload to github pages we need to put the following sentence when making the ng build
-`ng build --output-path docs --base-href /portfolio/`
-
+```
+src/
+├── components/
+│   ├── layout/     # Nav, Footer
+│   ├── sections/   # Hero, About, Skills, Projects, Contact
+│   └── ui/         # Reusable UI components
+├── data/           # Static content and project data
+├── hooks/          # Custom React hooks
+└── assets/         # Images and static files
+```
