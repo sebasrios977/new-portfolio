@@ -3,6 +3,7 @@ import {
   FaFilm,
   FaRocket,
   FaMugHot,
+  FaPalette,
 } from 'react-icons/fa6';
 
 export const PROJECTS = [
@@ -53,6 +54,18 @@ export const PROJECTS = [
     color: '#FB923C',
     Icon: FaMugHot,
     link: 'https://coffee-srr.netlify.app/menu',
+  },
+  {
+    id: 5,
+    title: 'AI Palette',
+    tag: 'AI · Design',
+    tagColor: '#F472B6',
+    description:
+      'Color palette generator powered by Gemini AI. Describe a mood or theme and get a matching, ready-to-use color palette.',
+    tech: ['React', 'Tailwind CSS', 'Gemini AI'],
+    color: '#F472B6',
+    Icon: FaPalette,
+    link: 'https://ai-palette.netlify.app/',
   },
 ];
 
