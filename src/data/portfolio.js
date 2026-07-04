@@ -4,6 +4,7 @@ import {
   FaRocket,
   FaMugHot,
   FaPalette,
+  FaMusic,
 } from 'react-icons/fa6';
 
 export const PROJECTS = [
@@ -66,6 +67,18 @@ export const PROJECTS = [
     color: '#F472B6',
     Icon: FaPalette,
     link: 'https://ai-palette.netlify.app/',
+  },
+  {
+    id: 6,
+    title: 'Preview Music',
+    tag: 'Media',
+    tagColor: '#22D3EE',
+    description:
+      'Simple music preview player that searches the iTunes API and streams 30-second track previews.',
+    tech: ['Vue', 'iTunes API'],
+    color: '#22D3EE',
+    Icon: FaMusic,
+    link: 'https://previewmusicsr.netlify.app/',
   },
 ];
 
