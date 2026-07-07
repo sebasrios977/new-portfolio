@@ -1,6 +1,6 @@
 import {
   FaFileInvoiceDollar,
-  FaFilm,
+  FaReceipt,
   FaRocket,
   FaMugHot,
   FaPalette,
@@ -22,15 +22,15 @@ export const PROJECTS = [
   },
   {
     id: 2,
-    title: 'Anime Universe',
-    tag: 'Entertainment',
+    title: 'Subtrack',
+    tag: 'Finance',
     tagColor: '#A78BFA',
     description:
-      'Anime exploration platform with advanced search, community ratings, and personalized recommendations.',
-    tech: ['Angular', 'REST API', 'CSS3'],
+      'Subscription tracker that calculates your monthly and annual spending based on the subscriptions you enter.',
+    tech: ['React', 'Zustand'],
     color: '#A78BFA',
-    Icon: FaFilm,
-    link: 'https://anime-angular.netlify.app/#/home',
+    Icon: FaReceipt,
+    link: 'https://subtrackmonthlyexpenses.netlify.app/',
   },
   {
     id: 3,
