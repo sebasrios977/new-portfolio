@@ -32,7 +32,7 @@ export default function Hero() {
         }}
       />
 
-      <div className="relative z-[2] max-w-[1100px] mx-auto w-full flex flex-col-reverse md:flex-row items-center justify-between gap-12 flex-wrap">
+      <div className="relative z-[2] max-w-[1100px] mx-auto w-full flex flex-col md:flex-row items-center justify-between gap-12 flex-wrap">
         {/* Left — text */}
         <div className="flex-1 min-w-0 md:min-w-[440px]">
           {/* Available badge */}
@@ -86,7 +86,7 @@ export default function Hero() {
 
         {/* Right — avatar + terminal */}
         <div className="flex flex-col items-center gap-8 w-full md:w-auto">
-          <Avatar />
+          {/* <Avatar /> */}
           <Terminal />
         </div>
       </div>

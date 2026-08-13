@@ -3,7 +3,7 @@ import { T } from '../../../tokens';
 
 const LINES = [
   { prompt: '~', cmd: ' whoami',        out: 'Sebastian Rios' },
-  { prompt: '~', cmd: ' cat skills.txt', out: 'React · JS · CSS · APIs' },
+  { prompt: '~', cmd: ' cat skills.txt', out: 'React · Angular · Vue · Flutter · JS · Sass · CSS · PHP · SQL · APIs' },
   { prompt: '~', cmd: ' echo $status',   out: 'Open to work ✓' },
 ];
 

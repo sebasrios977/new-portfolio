@@ -91,6 +91,12 @@ export const SKILLS = [
   { name: 'Node.js',      level: 55 },
   { name: 'REST APIs',    level: 75 },
   { name: 'TypeScript',   level: 70 },
+  { name: 'Angular',      level: 80 },
+  { name: 'Vue',          level: 90 },
+  { name: 'Sass',         level: 80 },
+  { name: 'Flutter',      level: 80 },
+  { name: 'PHP',          level: 70 },
+  { name: 'SQL',          level: 85 },
 ];
 
 export const TOOLS = [
