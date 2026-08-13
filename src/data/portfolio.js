@@ -1,11 +1,9 @@
-import {
-  FaFileInvoiceDollar,
-  FaReceipt,
-  FaRocket,
-  FaMugHot,
-  FaPalette,
-  FaMusic,
-} from 'react-icons/fa6';
+import facturaxmlImg    from '../assets/facturaxml.png';
+import subtrackImg      from '../assets/subtrack.png';
+import spaceExplorerImg from '../assets/space-explorer.jpg';
+import coffeeShopImg    from '../assets/coffee-shop.jpg';
+import aiPaletteImg     from '../assets/ai-palette.png';
+import previewMusicImg  from '../assets/preview-music.jpg';
 
 export const PROJECTS = [
   {
@@ -17,7 +15,7 @@ export const PROJECTS = [
       'Colombian electronic invoice analyzer (DIAN / UBL 2.1). Parses XML, extracts supplier data, line items and taxes, and suggests the accounting PUC category using AI.',
     tech: ['React', 'Claude API', 'XML Parser', 'PUC Colombia'],
     color: '#00E587',
-    Icon: FaFileInvoiceDollar,
+    image: facturaxmlImg,
     link: 'https://factura-xml.netlify.app/',
   },
   {
@@ -29,7 +27,7 @@ export const PROJECTS = [
       'Subscription tracker that calculates your monthly and annual spending based on the subscriptions you enter.',
     tech: ['React', 'Zustand'],
     color: '#A78BFA',
-    Icon: FaReceipt,
+    image: subtrackImg,
     link: 'https://subtrackmonthlyexpenses.netlify.app/',
   },
   {
@@ -41,7 +39,7 @@ export const PROJECTS = [
       'Interactive solar system visualizer with real-time NASA data and 3D simulations.',
     tech: ['React', 'CSS', 'React Router'],
     color: '#38BDF8',
-    Icon: FaRocket,
+    image: spaceExplorerImg,
     link: 'https://spacetourism-srr.netlify.app/#/space/home',
   },
   {
@@ -53,7 +51,7 @@ export const PROJECTS = [
       'Artisan coffee online store with shopping cart, origin filters, and a full order management system.',
     tech: ['React', 'Context API', 'Stripe'],
     color: '#FB923C',
-    Icon: FaMugHot,
+    image: coffeeShopImg,
     link: 'https://coffee-srr.netlify.app/menu',
   },
   {
@@ -65,7 +63,7 @@ export const PROJECTS = [
       'Color palette generator powered by Gemini AI. Describe a mood or theme and get a matching, ready-to-use color palette.',
     tech: ['React', 'Tailwind CSS', 'Gemini AI'],
     color: '#F472B6',
-    Icon: FaPalette,
+    image: aiPaletteImg,
     link: 'https://ai-palette.netlify.app/',
   },
   {
@@ -77,7 +75,7 @@ export const PROJECTS = [
       'Simple music preview player that searches the iTunes API and streams 30-second track previews.',
     tech: ['Vue', 'iTunes API'],
     color: '#22D3EE',
-    Icon: FaMusic,
+    image: previewMusicImg,
     link: 'https://previewmusicsr.netlify.app/',
   },
 ];
