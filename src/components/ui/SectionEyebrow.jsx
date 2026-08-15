@@ -1,4 +1,5 @@
 import GlowDot from './GlowDot';
+import { alpha } from '../../tokens';
 
 export default function SectionEyebrow({ children }) {
   return (
@@ -7,7 +8,7 @@ export default function SectionEyebrow({ children }) {
       {children}
       <span
         className="flex-1 h-px"
-        style={{ background: 'linear-gradient(90deg, rgba(0,229,135,0.40), transparent)' }}
+        style={{ background: `linear-gradient(90deg, ${alpha('green', 0.4)}, transparent)` }}
       />
     </div>
   );

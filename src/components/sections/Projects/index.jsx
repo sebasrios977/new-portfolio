@@ -2,24 +2,26 @@ import SectionEyebrow from '../../ui/SectionEyebrow';
 import ProjectCard from './ProjectCard';
 import { useInView } from '../../../hooks/useInView';
 import { PROJECTS } from '../../../data/portfolio';
-import { T } from '../../../tokens';
+import { useLanguage } from '../../../i18n/LanguageProvider';
+import { alpha } from '../../../tokens';
 
 export default function Projects() {
   const [ref, visible] = useInView();
+  const { t } = useLanguage();
 
   return (
     <section
       id="projects"
       className="px-5 md:px-12 py-24"
-      style={{ background: `linear-gradient(180deg, transparent, ${T.bgCard}40, transparent)` }}
+      style={{ background: `linear-gradient(180deg, transparent, ${alpha('card', 0.25)}, transparent)` }}
     >
       <div className="max-w-[1100px] mx-auto">
-        <SectionEyebrow>Projects</SectionEyebrow>
+        <SectionEyebrow>{t('projects.eyebrow')}</SectionEyebrow>
         <h2
           className="font-display font-bold text-port-text mb-12"
           style={{ fontSize: 'clamp(28px, 3.5vw, 42px)' }}
         >
-          What I've built
+          {t('projects.title')}
         </h2>
 
         <div

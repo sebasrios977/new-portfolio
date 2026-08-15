@@ -2,31 +2,98 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * Theming
+ * -------
+ * Every colour lives here as an RGB channel triplet ("250 248 243"), never as a
+ * finished colour. That one choice lets the same variable feed both Tailwind
+ * (`rgb(var(--port-bg) / <alpha-value>)`, so `bg-port-bg/50` works) and inline
+ * styles via the `T` helpers in tokens.js.
+ *
+ * Light is the base, so the site is light even if JS never runs — the default
+ * is a property of the stylesheet, not of a script. Dark is an override applied
+ * by the inline script in index.html before first paint, and by useTheme after.
+ *
+ * The OS preference is deliberately not consulted: the default is light for
+ * everyone, and only an explicit choice (stored in localStorage) changes it.
+ */
 :root {
-  --green:      #00E587;
-  --green-dim:  rgba(0, 229, 135, 0.10);
-  --green-glow: rgba(0, 229, 135, 0.25);
+  color-scheme: light;
+
+  /* Warm paper, not lightened navy: a cream ground with brown-black ink, so
+     light mode reads as its own design rather than dark mode faded out. */
+  --port-bg:      250 248 243;
+  --port-card:    255 255 255;
+  --port-card2:   243 240 232;
+  --port-border:  224 218 205;
+  /* Forest green chosen for cream, rather than the neon darkened until it
+     barely passes. Clears 4.5:1 against the page — measured, not eyeballed. */
+  --port-green:    13 110  74;
+  --port-teal:     15 100 110;
+  --port-blue:    235 230 219;
+  --port-text:     26  24  20;
+  --port-sub:      84  78  68;
+  /* Dark enough for the small text it carries — footer, tech chips, form
+     labels — to clear 4.5:1. A lighter grey looked better but failed. */
+  --port-muted:   110 103  89;
+  /* Text that sits on a green fill — flips with the theme, unlike the green. */
+  --port-on-green: 255 255 255;
+
+  --scrollbar-thumb: 210 203 189;
+
+  /* Pull the pastel project accents down to a readable ink on cream. The shade
+     is the theme's own ink, so darkened accents stay in the warm family. */
+  --project-ink-shade: #1A1814;
+  --project-ink-amount: 42%;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --port-bg:       11  17  32;
+  --port-card:     17  24  39;
+  --port-card2:    26  37  53;
+  --port-border:   30  58  95;
+  --port-green:     0 229 135;
+  --port-teal:     94 234 212;
+  --port-blue:     26  46  74;
+  --port-text:    240 246 255;
+  --port-sub:     126 168 196;
+  --port-muted:    61  96 128;
+  --port-on-green:  6  13  24;
+
+  --scrollbar-thumb: 30 58 95;
+
+  /* Project accents already suit a dark card, so no darkening here. */
+  --project-ink-shade: transparent;
+  --project-ink-amount: 0%;
 }
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { background-color: #0B1120; }
 
-::selection        { background: var(--green-glow); color: #F0F6FF; }
+body {
+  background-color: rgb(var(--port-bg));
+  /* Only the theme swap animates; page loads stay instant. */
+  transition: background-color 0.25s ease;
+}
+
+::selection { background: rgb(var(--port-green) / 0.25); color: rgb(var(--port-text)); }
+
 ::-webkit-scrollbar       { width: 5px; }
-::-webkit-scrollbar-track { background: #0B1120; }
-::-webkit-scrollbar-thumb { background: #1E3A5F; border-radius: 3px; }
+::-webkit-scrollbar-track { background: rgb(var(--port-bg)); }
+::-webkit-scrollbar-thumb { background: rgb(var(--scrollbar-thumb)); border-radius: 3px; }
 
 input::placeholder,
-textarea::placeholder { color: #3D6080; }
+textarea::placeholder { color: rgb(var(--port-muted)); }
 
 @keyframes spin {
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }
 }
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 12px #00E587; }
-  50%       { box-shadow: 0 0 24px #00E587, 0 0 40px rgba(0, 229, 135, 0.25); }
+  0%, 100% { box-shadow: 0 0 12px rgb(var(--port-green)); }
+  50%       { box-shadow: 0 0 24px rgb(var(--port-green)), 0 0 40px rgb(var(--port-green) / 0.25); }
 }
 @keyframes blink {
   0%, 100% { opacity: 1; }
@@ -37,3 +104,11 @@ textarea::placeholder { color: #3D6080; }
 .anim-spin-reverse { animation: spin 20s linear infinite reverse; }
 .anim-pulse-glow   { animation: pulse-glow 2s ease-in-out infinite; }
 .anim-blink        { animation: blink 0.8s step-end infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  body { transition: none; }
+  .anim-spin-slow,
+  .anim-spin-reverse,
+  .anim-pulse-glow { animation: none; }
+}
