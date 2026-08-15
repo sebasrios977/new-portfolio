@@ -1,7 +1,7 @@
 import { FaBullseye, FaPlug, FaSeedling, FaLocationDot } from 'react-icons/fa6';
 import SectionEyebrow from '../ui/SectionEyebrow';
 import { useInView } from '../../hooks/useInView';
-import { T } from '../../tokens';
+import { T, alpha } from '../../tokens';
 
 const TRAITS = [
   { Icon: FaBullseye,    title: 'Detail-oriented',    desc: 'Every pixel and interaction matters.' },
@@ -49,7 +49,7 @@ export default function About() {
               key={title}
               className="flex gap-4 items-start rounded-[10px] px-5 py-4 transition-all duration-200 cursor-default"
               style={{ background: T.bgCard, border: `1px solid ${T.border}` }}
-              onMouseEnter={e => { e.currentTarget.style.borderColor = `${T.green}60`; e.currentTarget.style.transform = 'translateX(4px)'; }}
+              onMouseEnter={e => { e.currentTarget.style.borderColor = alpha('green', 0.4); e.currentTarget.style.transform = 'translateX(4px)'; }}
               onMouseLeave={e => { e.currentTarget.style.borderColor = T.border; e.currentTarget.style.transform = ''; }}
             >
               <Icon size={20} color={T.green} className="mt-0.5 shrink-0" />

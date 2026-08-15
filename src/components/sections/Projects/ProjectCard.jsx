@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { T } from '../../../tokens';
+import { T, alpha, projectInk } from '../../../tokens';
 
 export default function ProjectCard({ project }) {
   const [hovered, setHovered] = useState(false);
@@ -47,7 +47,7 @@ export default function ProjectCard({ project }) {
         <div
           className="absolute inset-0 hidden md:flex flex-col gap-3 px-5 py-4 transition-opacity duration-[250ms]"
           style={{
-            background: `linear-gradient(180deg, ${T.bgCard}F7, ${T.bgCard}FC)`,
+            background: `linear-gradient(180deg, ${alpha('card', 0.97)}, ${alpha('card', 0.99)})`,
             opacity: hovered ? 1 : 0,
           }}
         >
@@ -67,7 +67,7 @@ export default function ProjectCard({ project }) {
             ))}
           </div>
 
-          <span className="font-mono text-[12px]" style={{ color }}>
+          <span className="font-mono text-[12px]" style={{ color: projectInk(color) }}>
             View project →
           </span>
         </div>
@@ -80,7 +80,7 @@ export default function ProjectCard({ project }) {
           <span
             className="font-mono text-[10px] rounded-[20px] px-2.5 py-[3px] tracking-[0.08em] shrink-0 mt-1"
             style={{
-              color: tagColor,
+              color: projectInk(tagColor),
               background: tagColor + '15',
               border: `1px solid ${tagColor}40`,
             }}
@@ -105,7 +105,7 @@ export default function ProjectCard({ project }) {
             ))}
           </div>
 
-          <span className="font-mono text-[12px]" style={{ color }}>
+          <span className="font-mono text-[12px]" style={{ color: projectInk(color) }}>
             View project →
           </span>
         </div>

@@ -1,4 +1,4 @@
-import { T } from '../../../tokens';
+import { T, alpha } from '../../../tokens';
 
 export default function Avatar() {
   return (
@@ -6,12 +6,12 @@ export default function Avatar() {
       {/* Outer glow ring */}
       <div
         className="absolute anim-spin-slow rounded-full"
-        style={{ inset: -8, border: `2px solid ${T.green}40` }}
+        style={{ inset: -8, border: `2px solid ${alpha('green', 0.25)}` }}
       />
       {/* Dashed orbit */}
       <div
         className="absolute anim-spin-reverse rounded-full"
-        style={{ inset: -20, border: `1px dashed ${T.green}25` }}
+        style={{ inset: -20, border: `1px dashed ${alpha('green', 0.15)}` }}
       />
       {/* Avatar circle */}
       <div

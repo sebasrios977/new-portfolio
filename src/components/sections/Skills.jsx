@@ -2,7 +2,7 @@ import SectionEyebrow from '../ui/SectionEyebrow';
 import AnimatedBar from '../ui/AnimatedBar';
 import { useInView } from '../../hooks/useInView';
 import { SKILLS, TOOLS } from '../../data/portfolio';
-import { T } from '../../tokens';
+import { T, alpha } from '../../tokens';
 
 export default function Skills() {
   const [ref, visible] = useInView();
@@ -30,7 +30,7 @@ export default function Skills() {
                 <span className="font-body text-[14px] text-port-text font-medium">{name}</span>
                 <span className="font-mono text-[11px] text-port-green">{level}%</span>
               </div>
-              <AnimatedBar level={level} color={T.green} />
+              <AnimatedBar level={level} />
             </div>
           ))}
         </div>
@@ -46,7 +46,7 @@ export default function Skills() {
                 key={tool}
                 className="font-mono text-[12px] text-port-sub rounded-md px-3.5 py-1.5 cursor-default transition-all duration-150"
                 style={{ background: T.bgCard, border: `1px solid ${T.border}` }}
-                onMouseEnter={e => { e.currentTarget.style.borderColor = `${T.green}60`; e.currentTarget.style.color = T.green; }}
+                onMouseEnter={e => { e.currentTarget.style.borderColor = alpha('green', 0.4); e.currentTarget.style.color = T.green; }}
                 onMouseLeave={e => { e.currentTarget.style.borderColor = T.border; e.currentTarget.style.color = T.textSub; }}
               >
                 {tool}

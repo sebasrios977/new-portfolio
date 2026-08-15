@@ -2,7 +2,7 @@ import { useState, useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import { FaLightbulb } from 'react-icons/fa6';
 import SectionEyebrow from '../ui/SectionEyebrow';
-import { T } from '../../tokens';
+import { T, alpha } from '../../tokens';
 
 const EMAILJS_SERVICE_ID  = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
@@ -37,7 +37,7 @@ export default function Contact() {
     transition: 'border-color 0.2s',
   };
 
-  const onFocus = e => { e.target.style.borderColor = `${T.green}80`; };
+  const onFocus = e => { e.target.style.borderColor = alpha('green', 0.5); };
   const onBlur  = e => { e.target.style.borderColor = T.border; };
 
   const handleSubmit = e => {
@@ -120,7 +120,7 @@ export default function Contact() {
             className="self-start rounded-lg px-8 py-3.5 font-display text-[15px] font-bold border-0 transition-all duration-150"
             style={{
               background: status === 'sent' ? '#10B981' : T.green,
-              color: '#060D18',
+              color: T.onGreen,
               cursor: status === 'sending' ? 'wait' : 'pointer',
               boxShadow: `0 0 20px ${T.greenGlow}`,
               opacity: status === 'sending' ? 0.8 : 1,

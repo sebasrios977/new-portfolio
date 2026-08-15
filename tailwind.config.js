@@ -1,19 +1,24 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{js,jsx}'],
+  darkMode: ['class', "[data-theme='dark']"],
   theme: {
     extend: {
+      // Colours resolve from the CSS variables defined in index.css, so every
+      // utility follows the active theme. The `<alpha-value>` placeholder keeps
+      // Tailwind's opacity modifiers working (e.g. `text-port-green/60`).
       colors: {
-        'port-bg':     '#0B1120',
-        'port-card':   '#111827',
-        'port-card2':  '#1A2535',
-        'port-border': '#1E3A5F',
-        'port-green':  '#00E587',
-        'port-teal':   '#5EEAD4',
-        'port-blue':   '#1A2E4A',
-        'port-text':   '#F0F6FF',
-        'port-sub':    '#7EA8C4',
-        'port-muted':  '#3D6080',
+        'port-bg':       'rgb(var(--port-bg) / <alpha-value>)',
+        'port-card':     'rgb(var(--port-card) / <alpha-value>)',
+        'port-card2':    'rgb(var(--port-card2) / <alpha-value>)',
+        'port-border':   'rgb(var(--port-border) / <alpha-value>)',
+        'port-green':    'rgb(var(--port-green) / <alpha-value>)',
+        'port-teal':     'rgb(var(--port-teal) / <alpha-value>)',
+        'port-blue':     'rgb(var(--port-blue) / <alpha-value>)',
+        'port-text':     'rgb(var(--port-text) / <alpha-value>)',
+        'port-sub':      'rgb(var(--port-sub) / <alpha-value>)',
+        'port-muted':    'rgb(var(--port-muted) / <alpha-value>)',
+        'port-on-green': 'rgb(var(--port-on-green) / <alpha-value>)',
       },
       fontFamily: {
         mono:    ["'Space Mono'", 'monospace'],

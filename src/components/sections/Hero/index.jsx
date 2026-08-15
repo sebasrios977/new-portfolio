@@ -1,7 +1,7 @@
 import GlowDot from '../../ui/GlowDot';
 import Avatar from './Avatar';
 import Terminal from './Terminal';
-import { T } from '../../../tokens';
+import { T, alpha } from '../../../tokens';
 
 function scrollTo(id) {
   document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
@@ -18,8 +18,8 @@ export default function Hero() {
         className="absolute inset-0 z-0"
         style={{
           backgroundImage: `
-            linear-gradient(${T.border}22 1px, transparent 1px),
-            linear-gradient(90deg, ${T.border}22 1px, transparent 1px)
+            linear-gradient(${alpha('border', 0.13)} 1px, transparent 1px),
+            linear-gradient(90deg, ${alpha('border', 0.13)} 1px, transparent 1px)
           `,
           backgroundSize: '48px 48px',
         }}
@@ -63,7 +63,7 @@ export default function Hero() {
               className="rounded-lg px-7 py-3 font-display text-[14px] font-bold cursor-pointer border-0 transition-all duration-150"
               style={{
                 background: T.green,
-                color: '#060D18',
+                color: T.onGreen,
                 boxShadow: `0 0 20px ${T.greenGlow}`,
               }}
               onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = `0 4px 28px ${T.greenGlow}`; }}

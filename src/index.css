@@ -2,31 +2,91 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * Theming
+ * -------
+ * Every colour lives here as an RGB channel triplet ("11 17 32"), never as a
+ * finished colour. That one choice lets the same variable feed both Tailwind
+ * (`rgb(var(--port-bg) / <alpha-value>)`, so `bg-port-bg/50` works) and inline
+ * styles via the `T` helpers in tokens.js.
+ *
+ * Dark is the default, so the site keeps its identity if JS never runs.
+ * `[data-theme='light']` is stamped on <html> by the inline script in
+ * index.html before first paint, and by useTheme afterwards.
+ */
 :root {
-  --green:      #00E587;
-  --green-dim:  rgba(0, 229, 135, 0.10);
-  --green-glow: rgba(0, 229, 135, 0.25);
+  color-scheme: dark;
+
+  --port-bg:       11 17 32;
+  --port-card:     17 24 39;
+  --port-card2:    26 37 53;
+  --port-border:   30 58 95;
+  --port-green:     0 229 135;
+  --port-teal:     94 234 212;
+  --port-blue:     26 46 74;
+  --port-text:    240 246 255;
+  --port-sub:     126 168 196;
+  --port-muted:    61 96 128;
+  /* Text that sits on a green fill — flips with the theme, unlike the green. */
+  --port-on-green:  6 13 24;
+
+  --scrollbar-thumb: 30 58 95;
+
+  /* Project accents already suit a dark card, so no darkening here. */
+  --project-ink-shade: transparent;
+  --project-ink-amount: 0%;
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+
+  --port-bg:      244 247 250;
+  --port-card:    255 255 255;
+  --port-card2:   234 240 245;
+  --port-border:  203 217 228;
+  /* The neon green is unreadable on white, so light mode uses a deeper
+     emerald of the same hue rather than a different accent. Darkened until
+     it clears 4.5:1 against the page — measured, not eyeballed. */
+  --port-green:     0 120  80;
+  --port-teal:     14 116 144;
+  --port-blue:    220 231 240;
+  --port-text:     11  17  32;
+  --port-sub:      68  96 122;
+  --port-muted:   124 147 166;
+  --port-on-green: 255 255 255;
+
+  --scrollbar-thumb: 190 206 219;
+
+  /* Pull the pastel project accents down to a readable ink on white. */
+  --project-ink-shade: #04121C;
+  --project-ink-amount: 42%;
 }
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { background-color: #0B1120; }
 
-::selection        { background: var(--green-glow); color: #F0F6FF; }
+body {
+  background-color: rgb(var(--port-bg));
+  /* Only the theme swap animates; page loads stay instant. */
+  transition: background-color 0.25s ease;
+}
+
+::selection { background: rgb(var(--port-green) / 0.25); color: rgb(var(--port-text)); }
+
 ::-webkit-scrollbar       { width: 5px; }
-::-webkit-scrollbar-track { background: #0B1120; }
-::-webkit-scrollbar-thumb { background: #1E3A5F; border-radius: 3px; }
+::-webkit-scrollbar-track { background: rgb(var(--port-bg)); }
+::-webkit-scrollbar-thumb { background: rgb(var(--scrollbar-thumb)); border-radius: 3px; }
 
 input::placeholder,
-textarea::placeholder { color: #3D6080; }
+textarea::placeholder { color: rgb(var(--port-muted)); }
 
 @keyframes spin {
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }
 }
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 12px #00E587; }
-  50%       { box-shadow: 0 0 24px #00E587, 0 0 40px rgba(0, 229, 135, 0.25); }
+  0%, 100% { box-shadow: 0 0 12px rgb(var(--port-green)); }
+  50%       { box-shadow: 0 0 24px rgb(var(--port-green)), 0 0 40px rgb(var(--port-green) / 0.25); }
 }
 @keyframes blink {
   0%, 100% { opacity: 1; }
@@ -37,3 +97,11 @@ textarea::placeholder { color: #3D6080; }
 .anim-spin-reverse { animation: spin 20s linear infinite reverse; }
 .anim-pulse-glow   { animation: pulse-glow 2s ease-in-out infinite; }
 .anim-blink        { animation: blink 0.8s step-end infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  body { transition: none; }
+  .anim-spin-slow,
+  .anim-spin-reverse,
+  .anim-pulse-glow { animation: none; }
+}

@@ -12,6 +12,20 @@
       href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
+    <script>
+      // Applies the theme before first paint, so the page never flashes the
+      // wrong one. Runs synchronously and on purpose: deferring it would put
+      // the flash back. Stored choice wins; otherwise follow the OS.
+      (function () {
+        try {
+          var stored = localStorage.getItem('theme');
+          var theme = stored || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+          document.documentElement.setAttribute('data-theme', theme);
+        } catch (e) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

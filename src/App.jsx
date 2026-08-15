@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useTheme } from './hooks/useTheme';
 import Nav from './components/layout/Nav';
 import Footer from './components/layout/Footer';
 import Hero from './components/sections/Hero';
@@ -11,6 +12,7 @@ const SECTIONS = ['hero', 'about', 'projects', 'skills', 'contact'];
 
 export default function App() {
   const [activeSection, setActiveSection] = useState('hero');
+  const [theme, toggleTheme] = useTheme();
 
   useEffect(() => {
     const observers = SECTIONS.map(id => {
@@ -28,7 +30,7 @@ export default function App() {
 
   return (
     <div className="bg-port-bg text-port-text min-h-screen">
-      <Nav active={activeSection} />
+      <Nav active={activeSection} theme={theme} onToggleTheme={toggleTheme} />
       <Hero />
       <About />
       <Projects />
