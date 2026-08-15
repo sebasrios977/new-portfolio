@@ -40,25 +40,31 @@
 :root[data-theme='light'] {
   color-scheme: light;
 
-  --port-bg:      244 247 250;
+  /* Warm paper, not inverted navy: a cream ground with brown-black ink, so
+     light mode reads as its own thing rather than dark mode turned inside out.
+     The cream also sits better against the terminal, which stays dark. */
+  --port-bg:      250 248 243;
   --port-card:    255 255 255;
-  --port-card2:   234 240 245;
-  --port-border:  203 217 228;
-  /* The neon green is unreadable on white, so light mode uses a deeper
-     emerald of the same hue rather than a different accent. Darkened until
-     it clears 4.5:1 against the page — measured, not eyeballed. */
-  --port-green:     0 120  80;
-  --port-teal:     14 116 144;
-  --port-blue:    220 231 240;
-  --port-text:     11  17  32;
-  --port-sub:      68  96 122;
-  --port-muted:   124 147 166;
+  --port-card2:   243 240 232;
+  --port-border:  224 218 205;
+  /* The neon green is unreadable on cream, so light mode uses a forest green
+     of the same family. Darkened until it clears 4.5:1 against the page —
+     measured, not eyeballed. */
+  --port-green:    13 110  74;
+  --port-teal:     15 100 110;
+  --port-blue:    235 230 219;
+  --port-text:     26  24  20;
+  --port-sub:      84  78  68;
+  /* Dark enough for the small text it carries — footer, tech chips, form
+     labels — to clear 4.5:1. A lighter grey looked better but failed. */
+  --port-muted:   110 103  89;
   --port-on-green: 255 255 255;
 
-  --scrollbar-thumb: 190 206 219;
+  --scrollbar-thumb: 210 203 189;
 
-  /* Pull the pastel project accents down to a readable ink on white. */
-  --project-ink-shade: #04121C;
+  /* Pull the pastel project accents down to a readable ink on cream. The shade
+     is the theme's own ink, so darkened accents stay in the warm family. */
+  --project-ink-shade: #1A1814;
   --project-ink-amount: 42%;
 }
 
