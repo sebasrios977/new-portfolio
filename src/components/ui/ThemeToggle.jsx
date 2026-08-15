@@ -1,4 +1,5 @@
 import { FaSun, FaMoon } from 'react-icons/fa6';
+import { useLanguage } from '../../i18n/LanguageProvider';
 import { T, alpha } from '../../tokens';
 
 /**
@@ -6,8 +7,9 @@ import { T, alpha } from '../../tokens';
  * so the icon reads as an action rather than a status.
  */
 export default function ThemeToggle({ theme, onToggle, className = '' }) {
+  const { t } = useLanguage();
   const goingToLight = theme === 'dark';
-  const label = goingToLight ? 'Switch to light theme' : 'Switch to dark theme';
+  const label = goingToLight ? t('nav.toLight') : t('nav.toDark');
 
   return (
     <button

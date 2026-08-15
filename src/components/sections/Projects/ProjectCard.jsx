@@ -1,9 +1,14 @@
 import { useState } from 'react';
+import { useLanguage } from '../../../i18n/LanguageProvider';
 import { T, alpha, projectInk } from '../../../tokens';
 
 export default function ProjectCard({ project }) {
   const [hovered, setHovered] = useState(false);
-  const { title, tag, tagColor, description, tech, color, image, link } = project;
+  const { t } = useLanguage();
+  const { id, title, tagColor, tech, color, image, link } = project;
+  // Tag and description are copy, so they come from the translations by id.
+  const tag = t(`projects.items.${id}.tag`);
+  const description = t(`projects.items.${id}.description`);
 
   return (
     <a
@@ -35,7 +40,7 @@ export default function ProjectCard({ project }) {
       <div className="relative aspect-[16/10] overflow-hidden shrink-0">
         <img
           src={image}
-          alt={`${title} interface`}
+          alt={t('projects.interfaceAlt').replace('{title}', title)}
           loading="lazy"
           decoding="async"
           className="w-full h-full object-cover object-top transition-transform duration-500 ease-out"
@@ -68,7 +73,7 @@ export default function ProjectCard({ project }) {
           </div>
 
           <span className="font-mono text-[12px]" style={{ color: projectInk(color) }}>
-            View project →
+            {t('projects.viewProject')}
           </span>
         </div>
       </div>
@@ -106,7 +111,7 @@ export default function ProjectCard({ project }) {
           </div>
 
           <span className="font-mono text-[12px]" style={{ color: projectInk(color) }}>
-            View project →
+            {t('projects.viewProject')}
           </span>
         </div>
       </div>

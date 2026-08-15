@@ -1,43 +1,51 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
+import { useLanguage } from '../../../i18n/LanguageProvider';
 import { TERM } from '../../../tokens';
 
-const LINES = [
-  { prompt: '~', cmd: ' whoami',        out: 'Sebastian Rios' },
-  { prompt: '~', cmd: ' cat skills.txt', out: 'React · Angular · Vue · Flutter · JS · Sass · CSS · PHP · SQL · APIs' },
-  { prompt: '~', cmd: ' echo $status',   out: 'Open to work ✓' },
-];
-
-function fullLine(i) {
-  return LINES[i].prompt + '$' + LINES[i].cmd;
+/**
+ * Only the status line is copy. The commands are shell commands, and the other
+ * outputs are a name and a list of technologies — none of those translate.
+ */
+function buildLines(t) {
+  return [
+    { prompt: '~', cmd: ' whoami',         out: 'Sebastian Rios' },
+    { prompt: '~', cmd: ' cat skills.txt', out: 'React · Angular · Vue · Flutter · JS · Sass · CSS · PHP · SQL · APIs' },
+    { prompt: '~', cmd: ' echo $status',   out: t('terminal.status') },
+  ];
 }
 
 export default function Terminal() {
-  const [step, setStep]     = useState(0);
+  const { t } = useLanguage();
+  const lines = useMemo(() => buildLines(t), [t]);
+
+  const [step, setStep]       = useState(0);
   const [charIdx, setCharIdx] = useState(0);
-  const [phase, setPhase]   = useState('typing'); // typing | showing | next
+  const [phase, setPhase]     = useState('typing'); // typing | showing | next
+
+  const fullLine = i => lines[i].prompt + '$' + lines[i].cmd;
 
   useEffect(() => {
-    if (step >= LINES.length) return;
+    if (step >= lines.length) return;
     const full = fullLine(step);
 
     if (phase === 'typing') {
       if (charIdx < full.length) {
-        const t = setTimeout(() => setCharIdx(c => c + 1), 55);
-        return () => clearTimeout(t);
+        const timer = setTimeout(() => setCharIdx(c => c + 1), 55);
+        return () => clearTimeout(timer);
       }
-      const t = setTimeout(() => setPhase('showing'), 400);
-      return () => clearTimeout(t);
+      const timer = setTimeout(() => setPhase('showing'), 400);
+      return () => clearTimeout(timer);
     }
     if (phase === 'showing') {
-      const t = setTimeout(() => setPhase('next'), 900);
-      return () => clearTimeout(t);
+      const timer = setTimeout(() => setPhase('next'), 900);
+      return () => clearTimeout(timer);
     }
-    if (phase === 'next' && step < LINES.length - 1) {
+    if (phase === 'next' && step < lines.length - 1) {
       setStep(s => s + 1);
       setCharIdx(0);
       setPhase('typing');
     }
-  }, [step, charIdx, phase]);
+  }, [step, charIdx, phase, lines]);
 
   return (
     <div
@@ -57,7 +65,7 @@ export default function Terminal() {
       </div>
 
       {/* Lines */}
-      {LINES.map((line, i) => (
+      {lines.map((line, i) => (
         <div key={i} className="mb-1.5">
           {(i < step || (i === step && charIdx > 0)) && (
             <div>

@@ -2,20 +2,22 @@ import SectionEyebrow from '../ui/SectionEyebrow';
 import AnimatedBar from '../ui/AnimatedBar';
 import { useInView } from '../../hooks/useInView';
 import { SKILLS, TOOLS } from '../../data/portfolio';
+import { useLanguage } from '../../i18n/LanguageProvider';
 import { T, alpha } from '../../tokens';
 
 export default function Skills() {
   const [ref, visible] = useInView();
+  const { t } = useLanguage();
 
   return (
     <section id="skills" className="px-5 md:px-12 py-24">
       <div className="max-w-[1100px] mx-auto">
-        <SectionEyebrow>Skills</SectionEyebrow>
+        <SectionEyebrow>{t('skills.eyebrow')}</SectionEyebrow>
         <h2
           className="font-display font-bold text-port-text mb-12"
           style={{ fontSize: 'clamp(28px, 3.5vw, 42px)' }}
         >
-          My tech stack
+          {t('skills.title')}
         </h2>
 
         {/* Skill bars */}
@@ -38,7 +40,7 @@ export default function Skills() {
         {/* Tools */}
         <div className="border-t border-port-border pt-9">
           <p className="font-mono text-[11px] text-port-muted mb-4 tracking-[0.1em] uppercase">
-            Tools & environment
+            {t('skills.tools')}
           </p>
           <div className="flex flex-wrap gap-2.5">
             {TOOLS.map(tool => (

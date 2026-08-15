@@ -1,6 +1,7 @@
 import GlowDot from '../../ui/GlowDot';
 import Avatar from './Avatar';
 import Terminal from './Terminal';
+import { useLanguage } from '../../../i18n/LanguageProvider';
 import { T, alpha } from '../../../tokens';
 
 function scrollTo(id) {
@@ -8,6 +9,8 @@ function scrollTo(id) {
 }
 
 export default function Hero() {
+  const { t } = useLanguage();
+
   return (
     <section
       id="hero"
@@ -38,7 +41,7 @@ export default function Hero() {
           {/* Available badge */}
           <div className="flex items-center gap-2 font-mono text-[12px] text-port-green tracking-[0.16em] uppercase mb-5">
             <GlowDot />
-            Available for work
+            {t('hero.badge')}
           </div>
 
           <h1 className="font-display font-bold leading-[1.1] text-port-text mb-2" style={{ fontSize: 'clamp(36px, 5vw, 60px)' }}>
@@ -49,12 +52,11 @@ export default function Hero() {
           </h1>
 
           <p className="font-display text-port-sub font-normal mb-6" style={{ fontSize: 'clamp(18px, 2.5vw, 26px)' }}>
-            Frontend Developer
+            {t('hero.role')}
           </p>
 
           <p className="font-body text-[16px] text-port-sub leading-[1.7] max-w-[420px] mb-9">
-            I build modern, accessible interfaces with purpose. I'm passionate about projects that
-            mix clean design with real functionality — from fintech tools to visual experiences.
+            {t('hero.bio')}
           </p>
 
           <div className="flex gap-3 flex-wrap">
@@ -69,7 +71,7 @@ export default function Hero() {
               onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = `0 4px 28px ${T.greenGlow}`; }}
               onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = `0 0 20px ${T.greenGlow}`; }}
             >
-              View projects →
+              {t('hero.viewProjects')}
             </button>
 
             <button
@@ -79,7 +81,7 @@ export default function Hero() {
               onMouseEnter={e => { e.currentTarget.style.borderColor = T.green; e.currentTarget.style.color = T.green; }}
               onMouseLeave={e => { e.currentTarget.style.borderColor = T.border; e.currentTarget.style.color = T.textSub; }}
             >
-              Contact
+              {t('hero.contact')}
             </button>
           </div>
         </div>
