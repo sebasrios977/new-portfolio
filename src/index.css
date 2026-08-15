@@ -5,51 +5,29 @@
 /*
  * Theming
  * -------
- * Every colour lives here as an RGB channel triplet ("11 17 32"), never as a
+ * Every colour lives here as an RGB channel triplet ("250 248 243"), never as a
  * finished colour. That one choice lets the same variable feed both Tailwind
  * (`rgb(var(--port-bg) / <alpha-value>)`, so `bg-port-bg/50` works) and inline
  * styles via the `T` helpers in tokens.js.
  *
- * Dark is the default, so the site keeps its identity if JS never runs.
- * `[data-theme='light']` is stamped on <html> by the inline script in
- * index.html before first paint, and by useTheme afterwards.
+ * Light is the base, so the site is light even if JS never runs — the default
+ * is a property of the stylesheet, not of a script. Dark is an override applied
+ * by the inline script in index.html before first paint, and by useTheme after.
+ *
+ * The OS preference is deliberately not consulted: the default is light for
+ * everyone, and only an explicit choice (stored in localStorage) changes it.
  */
 :root {
-  color-scheme: dark;
-
-  --port-bg:       11 17 32;
-  --port-card:     17 24 39;
-  --port-card2:    26 37 53;
-  --port-border:   30 58 95;
-  --port-green:     0 229 135;
-  --port-teal:     94 234 212;
-  --port-blue:     26 46 74;
-  --port-text:    240 246 255;
-  --port-sub:     126 168 196;
-  --port-muted:    61 96 128;
-  /* Text that sits on a green fill — flips with the theme, unlike the green. */
-  --port-on-green:  6 13 24;
-
-  --scrollbar-thumb: 30 58 95;
-
-  /* Project accents already suit a dark card, so no darkening here. */
-  --project-ink-shade: transparent;
-  --project-ink-amount: 0%;
-}
-
-:root[data-theme='light'] {
   color-scheme: light;
 
-  /* Warm paper, not inverted navy: a cream ground with brown-black ink, so
-     light mode reads as its own thing rather than dark mode turned inside out.
-     The cream also sits better against the terminal, which stays dark. */
+  /* Warm paper, not lightened navy: a cream ground with brown-black ink, so
+     light mode reads as its own design rather than dark mode faded out. */
   --port-bg:      250 248 243;
   --port-card:    255 255 255;
   --port-card2:   243 240 232;
   --port-border:  224 218 205;
-  /* The neon green is unreadable on cream, so light mode uses a forest green
-     of the same family. Darkened until it clears 4.5:1 against the page —
-     measured, not eyeballed. */
+  /* Forest green chosen for cream, rather than the neon darkened until it
+     barely passes. Clears 4.5:1 against the page — measured, not eyeballed. */
   --port-green:    13 110  74;
   --port-teal:     15 100 110;
   --port-blue:    235 230 219;
@@ -58,6 +36,7 @@
   /* Dark enough for the small text it carries — footer, tech chips, form
      labels — to clear 4.5:1. A lighter grey looked better but failed. */
   --port-muted:   110 103  89;
+  /* Text that sits on a green fill — flips with the theme, unlike the green. */
   --port-on-green: 255 255 255;
 
   --scrollbar-thumb: 210 203 189;
@@ -66,6 +45,28 @@
      is the theme's own ink, so darkened accents stay in the warm family. */
   --project-ink-shade: #1A1814;
   --project-ink-amount: 42%;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --port-bg:       11  17  32;
+  --port-card:     17  24  39;
+  --port-card2:    26  37  53;
+  --port-border:   30  58  95;
+  --port-green:     0 229 135;
+  --port-teal:     94 234 212;
+  --port-blue:     26  46  74;
+  --port-text:    240 246 255;
+  --port-sub:     126 168 196;
+  --port-muted:    61  96 128;
+  --port-on-green:  6  13  24;
+
+  --scrollbar-thumb: 30 58 95;
+
+  /* Project accents already suit a dark card, so no darkening here. */
+  --project-ink-shade: transparent;
+  --project-ink-amount: 0%;
 }
 
 * { box-sizing: border-box; }

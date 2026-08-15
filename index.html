@@ -13,16 +13,21 @@
       rel="stylesheet"
     />
     <script>
-      // Applies the theme before first paint, so the page never flashes the
-      // wrong one. Runs synchronously and on purpose: deferring it would put
-      // the flash back. Stored choice wins; otherwise follow the OS.
+      // Applies a stored theme before first paint, so returning visitors never
+      // flash the default first. Runs synchronously and on purpose: deferring
+      // it would put the flash back.
+      //
+      // Only a stored choice is applied. With no choice, nothing is stamped and
+      // the stylesheet's own default (light) stands — the OS preference is not
+      // consulted, by design.
       (function () {
         try {
           var stored = localStorage.getItem('theme');
-          var theme = stored || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
-          document.documentElement.setAttribute('data-theme', theme);
+          if (stored === 'dark' || stored === 'light') {
+            document.documentElement.setAttribute('data-theme', stored);
+          }
         } catch (e) {
-          document.documentElement.setAttribute('data-theme', 'dark');
+          /* Blocked storage: the stylesheet default (light) applies. */
         }
       })();
     </script>
