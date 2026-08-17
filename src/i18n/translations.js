@@ -56,8 +56,10 @@ export const translations = {
       eyebrow: 'Projects',
       title: "What I've built",
       viewProject: 'View project →',
+      featured: 'Featured project',
       interfaceAlt: '{title} interface',
       items: {
+        7: { tag: 'SaaS · Booking', description: 'Booking platform built for spas, beauty salons and barbershops. Handles appointment scheduling with email reminders, staff authentication and password recovery.' },
         1: { tag: 'Fintech · AI',  description: 'Colombian electronic invoice analyzer (DIAN / UBL 2.1). Parses XML, extracts supplier data, line items and taxes, and suggests the accounting PUC category using AI.' },
         2: { tag: 'Finance',       description: 'Subscription tracker that calculates your monthly and annual spending based on the subscriptions you enter.' },
         3: { tag: 'Educational',   description: 'Interactive solar system visualizer with real-time NASA data and 3D simulations.' },
@@ -134,8 +136,10 @@ export const translations = {
       eyebrow: 'Proyectos',
       title: 'Lo que he construido',
       viewProject: 'Ver proyecto →',
+      featured: 'Proyecto destacado',
       interfaceAlt: 'Interfaz de {title}',
       items: {
+        7: { tag: 'SaaS · Reservas', description: 'Aplicación desarrollada para spas, salones de belleza y barberías, para manejar las reservas de las citas con recordatorios vía email, autenticación y recuperación de contraseña.' },
         1: { tag: 'Fintech · IA',   description: 'Analizador de factura electrónica colombiana (DIAN / UBL 2.1). Procesa el XML, extrae datos del proveedor, ítems e impuestos, y sugiere la cuenta PUC contable con IA.' },
         2: { tag: 'Finanzas',       description: 'Gestor de suscripciones que calcula tu gasto mensual y anual a partir de las suscripciones que registras.' },
         3: { tag: 'Educativo',      description: 'Visualizador interactivo del sistema solar con datos de la NASA en tiempo real y simulaciones 3D.' },

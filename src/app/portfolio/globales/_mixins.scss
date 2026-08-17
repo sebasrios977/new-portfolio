@@ -1,9 +1,0 @@
-@use 'variables' as v;
-
-/** Media Queries **/
-@mixin mq($display) {
-    @media (min-width: $display) {
-        @content;
-    }
-}
-

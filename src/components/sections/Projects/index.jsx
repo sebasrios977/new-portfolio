@@ -1,5 +1,6 @@
 import SectionEyebrow from '../../ui/SectionEyebrow';
 import ProjectCard from './ProjectCard';
+import FeaturedProjectCard from './FeaturedProjectCard';
 import { useInView } from '../../../hooks/useInView';
 import { PROJECTS } from '../../../data/portfolio';
 import { useLanguage } from '../../../i18n/LanguageProvider';
@@ -24,18 +25,25 @@ export default function Projects() {
           {t('projects.title')}
         </h2>
 
+        {/* Explicit column counts rather than auto-fit: the featured card spans
+            the whole row, and a span needs a known number of tracks to span. */}
         <div
           ref={ref}
-          className="grid gap-6 transition-all duration-[800ms]"
+          className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 transition-all duration-[800ms]"
           style={{
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
             opacity: visible ? 1 : 0,
             transform: visible ? 'none' : 'translateY(40px)',
           }}
         >
-          {PROJECTS.map(project => (
-            <ProjectCard key={project.id} project={project} />
-          ))}
+          {PROJECTS.map(project =>
+            project.featured ? (
+              <div key={project.id} className="sm:col-span-2 lg:col-span-3">
+                <FeaturedProjectCard project={project} />
+              </div>
+            ) : (
+              <ProjectCard key={project.id} project={project} />
+            )
+          )}
         </div>
       </div>
     </section>

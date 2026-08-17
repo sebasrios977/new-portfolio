@@ -1,3 +1,4 @@
+import reservoImg       from '../assets/reservo.jpg';
 import facturaxmlImg    from '../assets/facturaxml.png';
 import subtrackImg      from '../assets/subtrack.png';
 import spaceExplorerImg from '../assets/space-explorer.jpg';
@@ -6,6 +7,18 @@ import aiPaletteImg     from '../assets/ai-palette.png';
 import previewMusicImg  from '../assets/preview-music.jpg';
 
 export const PROJECTS = [
+  {
+    // `featured` gets the wide, full-row treatment at the top of the grid.
+    // Only one project should carry it — a second one would read as a tie.
+    id: 7,
+    featured: true,
+    title: 'Reservo',
+    tagColor: '#60A5FA',
+    tech: ['React', 'Zustand', 'Tailwind CSS', 'Express', 'MongoDB'],
+    color: '#60A5FA',
+    image: reservoImg,
+    link: 'https://app.tureservo.com/',
+  },
   {
     id: 1,
     title: 'FacturaXML',
